@@ -1,0 +1,10 @@
+# Slim requirements for cloud deployment (Streamlit Community Cloud)
+# Full requirements (including torch, ultralytics, etc.) are in requirements.txt
+streamlit==1.52.1
+altair==6.0.0
+pandas==2.3.3
+numpy==1.26.4
+pyarrow==22.0.0
+boto3
+python-dotenv==1.2.1
+pytz==2025.2

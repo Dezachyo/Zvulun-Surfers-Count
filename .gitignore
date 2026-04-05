@@ -1,0 +1,31 @@
+# Universal / OS
+.DS_Store
+._*
+*._.DS_Store
+Thumbs.db
+.vscode/
+
+# JavaScript / Node.js (Usually the "heavy" culprit)
+node_modules/
+dist/
+build/
+.env
+**/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Dirs
+runs/
+data/
+models/
+
+# Model weights (large binaries)
+*.pt
+
+# Internal Claude context
+CLAUDE.md

@@ -1,0 +1,8 @@
+dbs:
+  - path: data/app_runs/surfer_data.db
+    replicas:
+      - url: s3://${LITESTREAM_S3_BUCKET}/surfer_data.db
+
+  - path: data/app_runs/weather_data.db
+    replicas:
+      - url: s3://${LITESTREAM_S3_BUCKET}/weather_data.db
