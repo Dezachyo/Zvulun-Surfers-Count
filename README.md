@@ -6,7 +6,11 @@
 ![SQLite](https://img.shields.io/badge/Storage-SQLite-lightgrey)
 ![AWS S3](https://img.shields.io/badge/Cloud-AWS_S3-orange)
 
-A personal project combining two interests: data and surfing. A YOLO model watches the Dabush beach webcam 24/7, counts surfers every 5 minutes, and pairs every count with a live WindGuru weather forecast — building a dataset that quantifies when surfers show up and what conditions they prefer.
+A personal project combining two interests: data and surfing. A YOLO model watches the Zvulun beach webcam 24/7, counts surfers every 5 minutes, and pairs every count with a live WindGuru weather forecast — building a dataset that quantifies when surfers show up and what conditions they prefer.
+
+
+https://github.com/user-attachments/assets/b5cc525f-453a-4d09-a41d-2556953ebaab
+
 
 **[Live Demo →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
 
@@ -20,7 +24,7 @@ Live HLS Webcam Stream (Dabush Beach, Herzliya)
             ▼
   Frame Sampling  (every 20 s)
             │
-  Frame Masking   (top 15% removed — sky / promenade)
+  Frame Masking   (top 15% removed — sky)
             │
   YOLOv8s-P2 + ByteTrack
             │
@@ -42,7 +46,7 @@ This was the hardest part. Surfers in a beach webcam are **small, distant blobs*
 
 ### The naive attempt — public datasets
 
-I started with surfing datasets from Roboflow: clean, well-labeled, close-up surf photography. The model hit mAP@50 of **0.94–0.97** and I thought I was done. Then I pointed it at the actual webcam feed and it barely detected anything. High scores, wrong domain.
+I started with surfing datasets from Roboflow: clean, well-labeled, close-up surf photography. The model hit mAP@50 of **0.94–0.97**. Then I pointed it at the actual webcam feed and it barely detected anything. High scores, wrong application.
 
 ### Switching to real frames
 
@@ -50,12 +54,9 @@ I labeled frames directly from the Dabush webcam — the exact viewpoint and lig
 
 ### Two things that actually helped
 
-**Masking the background.** The top 15% of the frame is sky, the promenade, and a car park — all noise. Masking it out before training gave a meaningful improvement in localisation quality (mAP@50-95 +0.04).
+**Masking the background.** The top 15% of the frame is timestamp/sky/deep sea — all noise. Masking it out before training gave a meaningful improvement in localisation quality (mAP@50-95 +0.04).
 
 **Adding a P2 detection head.** The standard YOLOv8 architecture's smallest detection stride is 8 pixels. The P2 variant adds a stride-4 head specifically for small objects. For surfers at this distance, that's the right tool. Combined with 100 epochs on GPU, this pushed mAP@50 to **0.691** on real webcam frames — the best result across all experiments.
-
-
-https://github.com/user-attachments/assets/b5cc525f-453a-4d09-a41d-2556953ebaab
 
 
 ### Filtering and counting at inference time
@@ -91,7 +92,10 @@ The Streamlit app (`app/app.py`) is the main way to consume the data:
 - **Swell × Wind heatmap** — mean surfer count across swell height and wind speed combinations, filterable by date range
 - **Image viewer** — browse annotated frames, linked to the detection table by timestamp
 
-Offline analysis (`src/run_data_analysis.py`) goes deeper: LOESS correlations between weather and surfer count, polar wind direction charts, circular-mean wind by hour of day.
+Note: Live mertics and Daily trend are off when main code (run_inferance.py) is not running -no incoming data. 
+
+<img width="1559" height="759" alt="Dashboard live" src="https://github.com/user-attachments/assets/5caaa624-070f-4986-82aa-12b44e6a9f96" />
+
 
 **[Open the live dashboard →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
 
