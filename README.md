@@ -9,10 +9,8 @@
 A personal project combining two interests: data and surfing. A YOLO model watches the Zvulun beach webcam 24/7, counts surfers every 5 minutes, and pairs every count with a live WindGuru weather forecast — building a dataset that quantifies when surfers show up and what conditions they prefer.
 
 
-https://github.com/user-attachments/assets/b5cc525f-453a-4d09-a41d-2556953ebaab
 
-
-**[Live Demo →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
+**[Live Demo →](https://zvulun-surfers-count-ad465jlrzcuedhqkh2xkrw.streamlit.app/)**
 
 ---
 
