@@ -10,7 +10,7 @@ A personal project combining two interests: data and surfing. A YOLO model watch
 
 https://github.com/user-attachments/assets/b5cc525f-453a-4d09-a41d-2556953ebaab
 
-**[Live Demo →](https://zvulun-surfers-count-ad465jlrzcuedhqkh2xkrw.streamlit.app/)**
+**[Dashboard →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
 
 ---
 
@@ -95,7 +95,7 @@ Note: Live mertics and Daily trend are off when main code (run_inferance.py) is 
 <img width="1559" height="759" alt="Dashboard live" src="https://github.com/user-attachments/assets/5caaa624-070f-4986-82aa-12b44e6a9f96" />
 
 
-**[Open the live dashboard →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
+**[Open the dashboard →](https://surferscount-jmilv5du45qzjz6ktwqf8p.streamlit.app/)**
 
 ---
 
